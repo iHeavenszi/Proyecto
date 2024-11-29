@@ -20,6 +20,9 @@
     "promise-mysql": "^5.2.0"
   },
   "devDependencies": {
-    "nodemon": "^3.1.7"
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "nodemon": "^3.1.7",
+    "typescript": "^5.7.2"
   }
 }
