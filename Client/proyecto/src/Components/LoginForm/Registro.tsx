@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import './LoginForm.css';
 import { FaUser, FaLock } from "react-icons/fa";
-import { useAuth } from "../Auth/AuthProvider";
+import { useAuth } from "../Auth/AuthProvider.tsx";
 import { Navigate } from "react-router-dom";
 
 
@@ -15,7 +15,7 @@ const Registro = () => {
         return <Navigate to="/dashboard" />
     }
     const handleSubmit = async (e) => {
-        e.preventDefault(); // Evitar que la página se recargue
+        e.preventDefault();
 
         try{
             const response = await fetch("http://localhost:4000/api/signup", {
@@ -34,6 +34,7 @@ const Registro = () => {
                 console.log("Usuario registrado:");
             } else {
                 console.error("Error al registrar usuario");
+
             }
         } catch (error) {
             console.error("Error en la solicitud:", error);
@@ -60,7 +61,7 @@ const Registro = () => {
             </form>
             
             <div className="register-link">
-                <p>¿Ya tienes cuenta? <a href="#">Inicia sesion!</a></p>
+                <p>¿Ya tienes cuenta? <a href="/">Inicia sesion!</a></p>
             </div>
         </div>
     );

@@ -29,7 +29,7 @@ export default function LoginForm(){
             </form>
             <button type="submit">Iniciar sesion</button>
             <div className="register-link">
-                <p>¿No tienes una cuenta? <a href="#">Registrate!</a></p>
+                <p>¿No tienes una cuenta? <a href="/registro">Registrate!</a></p>
             </div>
         </div>
     );
