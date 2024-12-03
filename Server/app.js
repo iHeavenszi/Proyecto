@@ -35,7 +35,7 @@ app.use(express.json());
 app.use("/api/signup", require("./src/routes/signup"));
 app.use("/api/signout", require("./src/routes/signout"));
 app.use("/api/login", require("./src/routes/login.js"));
-app.use("/api/user", require("./src/routes/user"));
+app.use("/api/user", require("./src/routes/user.js"));
 app.use("/api/todos", require("./src/routes/todos"));
 app.use("/api/refresh-token", require("./src/routes/refreshToken"));
 
