@@ -16,8 +16,10 @@
     "express": "^4.21.1",
     "jsonwebtoken": "^9.0.2",
     "mysql": "^2.18.1",
+    "mysql2": "^3.11.5",
     "nodemon": "^3.1.7",
-    "promise-mysql": "^5.2.0"
+    "promise-mysql": "^5.2.0",
+    "sequelize": "^6.37.5"
   },
   "devDependencies": {
     "@types/react": "^18.3.12",

@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import './LoginForm.css';
 import { FaUser, FaLock } from "react-icons/fa";
 import { useAuth } from "../Auth/AuthProvider.tsx";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
+import { AuthResponseError } from "../types/types.ts";
+
 
 
 
@@ -10,7 +12,11 @@ const Registro = () => {
     const [name, setName] = useState("");
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [errorResponse, setErrorResponse] = useState("");
+
     const auth = useAuth();
+    const goTo = useNavigate();
+
     if (auth.isAuthenticated){
         return <Navigate to="/dashboard" />
     }
@@ -32,8 +38,13 @@ const Registro = () => {
 
             if (response.ok) {               
                 console.log("Usuario registrado:");
+                setErrorResponse("");
+                goTo("/");
             } else {
                 console.error("Error al registrar usuario");
+                const json = await response.json() as AuthResponseError;
+                setErrorResponse(json.body.error);
+                return;
 
             }
         } catch (error) {
@@ -45,6 +56,7 @@ const Registro = () => {
         <div className="wrapper">
             <form className="form" onSubmit={handleSubmit}>
                 <h1>Registro</h1>
+                {!!errorResponse && <div className="errorMessage">{errorResponse}</div>}
                 <div className="input-box">
                     <input type="text" value={name} onChange={(e)=>setName(e.target.value)} placeholder="Ingresa tu nombre y apellido" required/>
                     <FaUser className="icon"/>

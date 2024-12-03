@@ -1,16 +1,16 @@
-const mysql = require("promise-mysql");
+const { Sequelize } = require("sequelize");
 const dotenv = require("dotenv");
-dotenv.config()
+dotenv.config();
 
-const connection = mysql.createConnection({
-    host:process.env.HOST,
-    database:process.env.DATABASE,
-    user:process.env.USER,
-    password:process.env.PASSWORD
-})
+const sequelize = new Sequelize(
+    process.env.DATABASE,
+    process.env.USER,
+    process.env.PASSWORD,
+    {
+        host: process.env.HOST,
+        dialect: "mysql",
+        logging: false, // Opcional: Desactiva los logs de consultas SQL
+    }
+);
 
-const getConnection = async ()=> await connection;
-
-module.exports = {
-    getConnection
-}
+module.exports = sequelize;
