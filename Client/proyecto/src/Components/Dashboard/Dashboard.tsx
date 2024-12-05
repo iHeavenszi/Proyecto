@@ -19,7 +19,10 @@ const Dashboard = () => {
     }
 
     return (
-       <h1></h1>
+        <div>
+        <h1>Dashboard de {auth.getUser()?.name || "Usuario no encontrado"}</h1>
+        <LogoutButton />
+        </div>
     );
 };
 
