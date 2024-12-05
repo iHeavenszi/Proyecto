@@ -52,7 +52,7 @@ const Registro = () => {
         }
     };
 
-    return (
+    return (  
         <div className="wrapper">
             <form className="form" onSubmit={handleSubmit}>
                 <h1>Registro</h1>

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useAuth } from "../Auth/AuthProvider";
 import LogoutButton from "../Auth/LogoutButton";
+import '../../../src/app.css';
 
 const Dashboard = () => {
     const auth = useAuth();
@@ -18,10 +19,7 @@ const Dashboard = () => {
     }
 
     return (
-        <div>
-        <h1>Dashboard de {auth.getUser()?.name || "Usuario no encontrado"}</h1>
-        <LogoutButton />
-        </div>
+       <h1></h1>
     );
 };
 

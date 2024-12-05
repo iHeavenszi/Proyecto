@@ -28,18 +28,6 @@ a:hover {
   color: #535bf2;
 }
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  justify-content: center;
-  align-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-  background: url('./Components/Assets/guppy-platinum-half-moon-dragon-fish-3840x2160.jpg');
-  background-size: cover;
-  background-position: center;
-}
 
 h1 {
   font-size: 3.2em;
