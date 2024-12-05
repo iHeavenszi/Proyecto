@@ -1,7 +1,7 @@
 export interface AuthResponse{
     body: {
         user: User;
-        accesToken: string;
+        accessToken: string;
         refreshToken: string;
     };
 }
@@ -14,4 +14,11 @@ export interface User{
     id: string;
     name: string;
     username: string;
+}
+export interface AccessTokenResponse{
+    statuscode: number;
+    body: {
+        accessToken: string;
+    },
+    error?: string;
 }

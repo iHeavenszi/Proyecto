@@ -3,7 +3,7 @@ import './LoginForm.css';
 import { FaUser, FaLock } from "react-icons/fa";
 import { useAuth } from "../Auth/AuthProvider";
 import { Navigate, useNavigate } from "react-router-dom";
-import { AuthResponseError } from "../types/types.ts";
+import { AuthResponse, AuthResponseError } from "../types/types.ts";
 
 export default function LoginForm(){
 
@@ -29,9 +29,14 @@ export default function LoginForm(){
             });
 
             if (response.ok) {               
-                console.log("sesion iniciada");
-                setErrorResponse("");
-                goTo("/");
+                const json = (await response.json()) as AuthResponse;
+                if(json.body.accessToken && json.body.refreshToken){
+                    console.log("sesion iniciada");
+                    setErrorResponse("");
+                    auth.saveUser(json)
+                    goTo("/dashboard");
+                }
+
             } else {
                 console.error("Error al iniciar sesion");
                 const json = await response.json() as AuthResponseError;
