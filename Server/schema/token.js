@@ -12,15 +12,6 @@ const Token = sequelize.define("Token", {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    userId: {
-        type: DataTypes.INTEGER.UNSIGNED, // Asegúrate de definirlo como UNSIGNED
-        allowNull: false,
-        references: {
-            model: User,
-            key: "id",
-        },
-        onDelete: "CASCADE", // Elimina tokens si el usuario es eliminado
-    },
 }, {
     tableName: "tokens",
     timestamps: false,

@@ -1,8 +1,8 @@
 function getTokenFromHeader(headers) {
  if (headers && headers.authorization){
      const token = headers.authorization.split(' ');
-     if (parted.length === 2){
-         return parted[1];
+     if (token.length === 2){
+         return token[1];
      }else {
         return null;
      }

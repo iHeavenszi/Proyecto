@@ -4,6 +4,7 @@ const mysql = require('mysql');
 const database = require("./src/database");
 const bodyParser = require("body-parser");
 const sequelize = require("./src/database");
+const authenticate = require("./auth/authenticate"); 
 
 require('dotenv').config();
 
@@ -35,8 +36,8 @@ app.use(express.json());
 app.use("/api/signup", require("./src/routes/signup"));
 app.use("/api/signout", require("./src/routes/signout"));
 app.use("/api/login", require("./src/routes/login.js"));
-app.use("/api/user", require("./src/routes/user.js"));
-app.use("/api/todos", require("./src/routes/todos"));
+app.use("/api/user", authenticate, require("./src/routes/user.js"));
+app.use("/api/todos", authenticate, require("./src/routes/todos"));
 app.use("/api/refresh-token", require("./src/routes/refreshToken"));
 
 app.get('/', (req, res) => {
