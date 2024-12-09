@@ -1,14 +1,16 @@
-import { useState } from "react";
 import React from "react";
-import { Outlet, Navigate } from "react-router-dom";
-import { useAuth } from "../Auth/AuthProvider";
-
-
+import { Navigate, Outlet } from "react-router-dom";
+import { useAuth } from "../Auth/AuthProvider"; // Hook para acceder al estado de autenticación
 
 const RutaProtegida = () => {
-      const auth = useAuth()
-    
-      return auth.isAuthenticated ? <Outlet /> : <Navigate to="/" />
+  const { isAuthenticated } = useAuth(); // Obtener estado de autenticación del contexto
+
+  if (!isAuthenticated) {
+    // Si no está autenticado, redirigir al inicio de sesión
+    return <Navigate to="/" />;
+  }
+
+  return <Outlet />; // Renderiza las rutas hijas si está autenticado
 };
 
 export default RutaProtegida;
